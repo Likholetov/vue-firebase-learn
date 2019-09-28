@@ -49,7 +49,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary">Войти</v-btn>
+            <v-btn color="primary" @click.prevent="signin" :disabled="processing">Войти</v-btn>
             <v-spacer></v-spacer>
           </v-card-actions>
         </v-card>
@@ -64,7 +64,7 @@
       source: String,
     },
     data: () => ({
-      valid: true,
+      valid: false,
       email: '',
       emailRules: [
         v => !!v || 'Это поле обязательно для заполнения',
@@ -74,6 +74,30 @@
       passwordRules: [
         v => !!v || 'Это поле обязательно для заполнения'
       ],
+      lazy: true,
     }),
+    computed: {
+      error () {
+        return this.$store.getters.getError
+      },
+      processing () {
+        return this.$store.getters.getProcessing
+      },
+      isUserAuthenticated () {
+        return this.$store.getters.isUserAuthenticated
+      }
+    },
+    watch: {
+      isUserAuthenticated (val) {
+        if(val === true){
+          this.$router.push('/')
+        }
+      }
+    },
+    methods: {
+      signin(){
+        this.$store.dispatch('signIn', {email:this.email, password:this.password})
+      }
+    }
   }
 </script>

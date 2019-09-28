@@ -22,10 +22,16 @@
             <v-spacer></v-spacer>
           </v-toolbar>
           <v-card-text>
+            <v-alert
+                    :value="error"
+                    type="error">
+              {{error}}
+            </v-alert>
             <v-form
               ref="form"
               v-model="valid"
               :lazy-validation="lazy"
+
             >
             <v-text-field
               label="Имя"
@@ -48,7 +54,7 @@
               <v-text-field
                 id="password"
                 label="Пароль"
-                v-model.trim="password"
+                v-model="password"
                 :rules="passwordRules"
                 required
                 prepend-icon="lock"
@@ -68,7 +74,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary">Зарегистрироваться</v-btn>
+            <v-btn color="primary" @click.prevent="signup" :disabled="processing">Зарегистрироваться</v-btn>
             <v-spacer></v-spacer>
           </v-card-actions>
         </v-card>
@@ -83,7 +89,7 @@
       source: String,
     },
     data: () => ({
-      valid: true,
+      valid: false,
       name: '',
       nameRules: [
         v => !!v || 'Это поле обязательно для заполнения',
@@ -101,10 +107,32 @@
         v => !!v || 'Это поле обязательно для заполнения',
         v => (v && v.length >= 10) || 'Пароль должен быть не менее 10 символов',
       ],
+      lazy: true,
     }),
     computed: {
       comparePasswords () {
         return this.password !== this.confirmPassword ? 'Пароли не совпадают' : true
+      },
+      error () {
+        return this.$store.getters.getError
+      },
+      processing () {
+        return this.$store.getters.getProcessing
+      },
+      isUserAuthenticated () {
+        return this.$store.getters.isUserAuthenticated
+      }
+    },
+    watch: {
+      isUserAuthenticated (val) {
+        if(val === true){
+          this.$router.push('/')
+        }
+      }
+    },
+    methods: {
+      signup(){
+        this.$store.dispatch('signUp', {email:this.email, password:this.password, name:this.name})
       }
     }
   }
