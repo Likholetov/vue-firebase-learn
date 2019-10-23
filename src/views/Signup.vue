@@ -43,7 +43,7 @@
 							<v-text-field
 								id="password"
 								label="Повторите пароль"
-								v-model.trim="confirmPassword"
+								v-model="confirmPassword"
 								:rules="[comparePasswords]"
 								required
 								prepend-icon="lock"
@@ -64,9 +64,6 @@
 
 <script>
 export default {
-	props: {
-		source: String
-	},
 	data: () => ({
 		valid: false,
 		name: '',

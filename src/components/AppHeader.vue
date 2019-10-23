@@ -24,6 +24,10 @@
 					<span class="mr-2">{{ item.title }}</span>
 					<v-icon>{{ item.icon }}</v-icon>
 				</v-btn>
+				<v-btn text class="font-weight-light" @click.prevent="signout" v-if="isUserAuthenticated">
+					<span class="mr-2">Выйти</span>
+					<v-icon>exit_to_app</v-icon>
+				</v-btn>
 			</v-toolbar-items>
 		</v-app-bar>
 	</div>
@@ -60,12 +64,6 @@ export default {
 							icon: 'account_circle',
 							title: 'Мой кабинет',
 							route: '/profile'
-						},
-						{
-							id: 3,
-							icon: 'exit_to_app',
-							title: 'Выйти',
-							route: '/logout'
 						}
 				  ]
 				: [
@@ -88,6 +86,11 @@ export default {
 							route: '/signup'
 						}
 				  ];
+		}
+	},
+	methods: {
+		signout() {
+			this.$store.dispatch('signOut');
 		}
 	}
 };

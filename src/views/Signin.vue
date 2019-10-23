@@ -8,10 +8,13 @@
 						<v-spacer></v-spacer>
 					</v-toolbar>
 					<v-card-text>
+						<v-alert :value="error" type="error">
+							{{ error }}
+						</v-alert>
 						<v-form ref="form" v-model="valid" :lazy-validation="lazy">
 							<v-text-field
 								label="Электронная почта"
-								v-model="email"
+								v-model.trim="email"
 								:rules="emailRules"
 								required
 								prepend-icon="person"
@@ -42,9 +45,6 @@
 
 <script>
 export default {
-	props: {
-		source: String
-	},
 	data: () => ({
 		valid: false,
 		email: '',
