@@ -18,8 +18,8 @@
 									height="100px"
 									src="https://i2.rozetka.ua/goods/11346973/76109916_images_11346973164.jpg"
 								></v-img>
-								<div class="text-xs-center">
-									<v-btn flat color="white">
+								<div class="text-center">
+									<v-btn text tile color="white">
 										<v-icon left>visibility</v-icon> YouTube
 									</v-btn>
 								</div>
@@ -27,18 +27,22 @@
 							<v-flex xs8 md9>
 								<v-card-title>
 									<div>
-										<div class="headline">
-											{{ book.title }}
-										</div>
-										<div>{{ book.description }}</div>
-										<v-divider class="white"></v-divider>
 										<div>
-											Уровень:
-											{{ getBookLevel(book.level) }},
-											{{ book.parts }} частей
+											{{ book.title }}
 										</div>
 									</div>
 								</v-card-title>
+								<v-card-text>
+									<div class="white--text">
+										{{ book.description }}
+									</div>
+									<v-divider class="white"></v-divider>
+									<div class="white--text">
+										Уровень:
+										{{ getBookLevel(book.level) }},
+										{{ book.parts }} частей
+									</div>
+								</v-card-text>
 								<v-card-actions>
 									<v-rating
 										v-model="book.rating"
@@ -52,7 +56,9 @@
 										<span>({{ book.ratingsCount }})</span>
 									</div>
 									<v-spacer></v-spacer>
-									<v-btn class="primary" flat>Открыть</v-btn>
+									<v-btn class="primary" text tile
+										>Открыть</v-btn
+									>
 								</v-card-actions>
 							</v-flex>
 						</v-layout>
