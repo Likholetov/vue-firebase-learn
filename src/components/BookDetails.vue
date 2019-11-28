@@ -4,7 +4,7 @@
 			<v-layout row>
 				<v-flex xs4 md3>
 					<v-img
-						height="100px"
+						height="150px"
 						src="https://i2.rozetka.ua/goods/11346973/76109916_images_11346973164.jpg"
 					></v-img>
 					<div class="text-center">
@@ -46,13 +46,7 @@
 								<span>({{ book.ratingsCount }})</span>
 							</div>
 							<v-spacer></v-spacer>
-							<v-btn
-								class="primary"
-								text
-								tile
-								:to="{ name: 'book', params: { id: book.id } }"
-								>Открыть</v-btn
-							>
+							<v-btn class="primary" text tile>Загрузить</v-btn>
 						</v-flex>
 					</v-card-actions>
 				</v-flex>
