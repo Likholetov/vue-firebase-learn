@@ -156,6 +156,38 @@ export default {
 					{
 						origWord: 'Hi',
 						transWord: 'Привет'
+					},
+					{
+						origWord: 'Hi',
+						transWord: 'Привет'
+					},
+					{
+						origWord: 'Hi',
+						transWord: 'Привет'
+					},
+					{
+						origWord: 'Hi',
+						transWord: 'Привет'
+					},
+					{
+						origWord: 'Hi',
+						transWord: 'Привет'
+					},
+					{
+						origWord: 'Hi',
+						transWord: 'Привет'
+					},
+					{
+						origWord: 'Hi',
+						transWord: 'Привет'
+					},
+					{
+						origWord: 'Hi',
+						transWord: 'Привет'
+					},
+					{
+						origWord: 'Hi',
+						transWord: 'Привет'
 					}
 				]
 			}

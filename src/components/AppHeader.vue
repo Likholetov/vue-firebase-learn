@@ -1,6 +1,11 @@
 <template>
 	<div>
-		<v-navigation-drawer absolute temporary v-model="drawer" class="hidden-md-and-up">
+		<v-navigation-drawer
+			absolute
+			temporary
+			v-model="drawer"
+			class="hidden-md-and-up"
+		>
 			<v-list>
 				<v-list-item v-for="item in menuItems" :key="item.id" link>
 					<v-list-item-icon>
@@ -13,18 +18,32 @@
 			</v-list>
 		</v-navigation-drawer>
 		<v-app-bar dark app color="primary">
-			<v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
+			<v-app-bar-nav-icon
+				@click.stop="drawer = !drawer"
+				class="hidden-md-and-up"
+			></v-app-bar-nav-icon>
 			<v-toolbar-title class="headline text-uppercase">
 				<span class="font-weight-black">Vue</span>
 				<span class="font-weight-light">learn</span>
 			</v-toolbar-title>
 			<v-spacer></v-spacer>
 			<v-toolbar-items class="hidden-sm-and-down">
-				<v-btn v-for="item in menuItems" :key="item.id" text :to="item.route" class="font-weight-light">
+				<v-btn
+					v-for="item in menuItems"
+					:key="item.id"
+					text
+					:to="item.route"
+					class="font-weight-light"
+				>
 					<span class="mr-2">{{ item.title }}</span>
 					<v-icon>{{ item.icon }}</v-icon>
 				</v-btn>
-				<v-btn text class="font-weight-light" @click.prevent="signout" v-if="isUserAuthenticated">
+				<v-btn
+					text
+					class="font-weight-light"
+					@click.prevent="signout"
+					v-if="isUserAuthenticated"
+				>
 					<span class="mr-2">Выйти</span>
 					<v-icon>exit_to_app</v-icon>
 				</v-btn>
