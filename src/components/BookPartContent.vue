@@ -46,7 +46,7 @@
 							v-for="(paragraph, i) in part.content"
 							:key="`par2${i}`"
 						>
-							<v-flex xs-6>
+							<v-flex xs6>
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span
 									v-for="(sentence, y) in paragraph.sentences"
@@ -55,7 +55,7 @@
 									<span>{{ sentence.originText }}</span>
 								</span>
 							</v-flex>
-							<v-flex xs-6>
+							<v-flex xs6>
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 								<span
 									v-for="(sentence, y) in paragraph.sentences"

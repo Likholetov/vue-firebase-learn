@@ -49,15 +49,17 @@ export default {
 		signOut() {
 			firebase.auth().signOut();
 		},
-		stateChanged({ commit }, payload) {
+		stateChanged({ commit, dispatch }, payload) {
 			if (payload) {
 				commit('setUser', payload.uid);
+				dispatch('loadUserData', payload.uid);
 			} else {
 				commit('unsetUser');
 			}
 		}
 	},
 	getters: {
-		isUserAuthenticated: state => state.user.isAuthenticated
+		isUserAuthenticated: state => state.user.isAuthenticated,
+		userId: state => state.user.uid
 	}
 };

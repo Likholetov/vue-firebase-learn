@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import vuetify from './plugins/vuetify';
 import store from './store';
+import FormattedDate from './filters/formattedDate';
 import VueYouTubeEmbed from 'vue-youtube-embed';
 import firebaseConfig from './config/firebase.js';
 // Firebase App (the core Firebase SDK) is always required and
@@ -17,7 +18,12 @@ Vue.use(VueYouTubeEmbed);
 
 Vue.config.productionTip = false;
 
-firebase.initializeApp(firebaseConfig);
+Vue.filter('formattedDate', FormattedDate);
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const db = firebaseApp.firestore();
+
+Vue.$db = db;
 
 new Vue({
 	router,
@@ -28,5 +34,7 @@ new Vue({
 		firebase.auth().onAuthStateChanged(user => {
 			this.$store.dispatch('stateChanged', user);
 		});
+
+		this.$store.dispatch('loadBooks');
 	}
 }).$mount('#app');

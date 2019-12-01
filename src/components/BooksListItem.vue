@@ -3,10 +3,7 @@
 		<v-container fluid>
 			<v-layout row>
 				<v-flex xs4 md3>
-					<v-img
-						height="100px"
-						src="https://i2.rozetka.ua/goods/11346973/76109916_images_11346973164.jpg"
-					></v-img>
+					<v-img height="100px" :src="book.imageUrl"></v-img>
 					<div class="text-center">
 						<v-btn text tile color="white">
 							<v-icon left>visibility</v-icon> YouTube
@@ -34,7 +31,7 @@
 					</v-card-text>
 					<v-card-actions>
 						<v-flex row>
-							<v-rating
+							<!-- <v-rating
 								v-model="book.rating"
 								color="yellow"
 								readonly
@@ -44,7 +41,7 @@
 							<div class="ml-1">
 								<span>{{ book.rating }}</span>
 								<span>({{ book.ratingsCount }})</span>
-							</div>
+							</div> -->
 							<v-spacer></v-spacer>
 							<v-btn
 								class="primary"
