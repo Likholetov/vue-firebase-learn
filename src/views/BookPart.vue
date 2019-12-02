@@ -107,14 +107,18 @@ export default {
 	},
 	computed: {
 		finishedDate() {
-			return this.$store.getters.userData.books[this.bookId].parts[
-				this.partId
-			].finishedDate;
+			if (this.$store.getters.userData.books[this.bookId]) {
+				return this.$store.getters.userData.books[this.bookId].parts[
+					this.partId
+				].finishedDate;
+			}
 		},
 		savedRating() {
-			return this.$store.getters.userData.books[this.bookId].parts[
-				this.partId
-			].rating;
+			if (this.$store.getters.userData.books[this.bookId]) {
+				return this.$store.getters.userData.books[this.bookId].parts[
+					this.partId
+				].rating;
+			}
 		}
 	},
 	methods: {
