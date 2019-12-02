@@ -4,13 +4,17 @@ export default {
 	state: {
 		user: {
 			isAuthenticated: false,
-			uid: null
+			uid: null,
+			name: null
 		}
 	},
 	mutations: {
 		setUser(state, payload) {
 			state.user.isAuthenticated = true;
 			state.user.uid = payload;
+		},
+		setUserName(state, payload) {
+			state.user.name = payload;
 		},
 		unsetUser(state) {
 			state.user.isAuthenticated = false;
@@ -25,6 +29,12 @@ export default {
 				.auth()
 				.createUserWithEmailAndPassword(payload.email, payload.password)
 				.then(() => {
+					firebase
+						.auth()
+						.currentUser.updateProfile({
+							displayName: payload.name
+						})
+						.then(() => commit('setUserName', payload.name));
 					commit('setProcessing', false);
 				})
 				.catch(function(error) {
