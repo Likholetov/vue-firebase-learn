@@ -161,10 +161,15 @@ export default {
 				newPassword: this.newpassword,
 				changeType: this.changeType
 			});
-			if (!getError) {
-				this.dialog = false;
-			}
 		}
+	},
+	created() {
+		this.$bus.$on('user-profile-data-changed', () => {
+			this.dialog = false;
+		});
+	},
+	beforeDestroy() {
+		this.$bus.$off('user-profile-data-changed');
 	}
 };
 </script>

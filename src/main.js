@@ -14,6 +14,8 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
+import { setupBus } from './infrastructure/eventBus';
+
 Vue.use(VueYouTubeEmbed);
 
 Vue.config.productionTip = false;
@@ -24,6 +26,8 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 
 Vue.$db = db;
+
+setupBus();
 
 new Vue({
 	router,

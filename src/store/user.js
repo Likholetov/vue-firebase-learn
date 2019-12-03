@@ -1,4 +1,6 @@
 import * as firebase from 'firebase/app';
+import router from '../router';
+import { EventBus } from '../infrastructure/eventBus';
 
 export default {
 	state: {
@@ -71,6 +73,7 @@ export default {
 				dispatch('loadUserData', payload.uid);
 			} else {
 				commit('unsetUser');
+				router.push('/');
 			}
 		},
 		changeUserProfileData({ commit }, payload) {
@@ -95,6 +98,7 @@ export default {
 							.then(() => {
 								commit('setUserName', payload.newName);
 								commit('setProcessing', false);
+								EventBus.notify('user-profile-data-changed');
 							})
 							.catch(error => {
 								commit('setProcessing', false);
@@ -108,6 +112,7 @@ export default {
 							.then(() => {
 								commit('setUserEmail', payload.newEmail);
 								commit('setProcessing', false);
+								EventBus.notify('user-profile-data-changed');
 							})
 							.catch(error => {
 								commit('setProcessing', false);
@@ -120,6 +125,7 @@ export default {
 							.updatePassword(payload.newPassword)
 							.then(() => {
 								commit('setProcessing', false);
+								EventBus.notify('user-profile-data-changed');
 							})
 							.catch(error => {
 								commit('setProcessing', false);
