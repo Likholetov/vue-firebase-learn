@@ -107,14 +107,22 @@ export default {
 	},
 	computed: {
 		finishedDate() {
-			if (this.$store.getters.userData.books[this.bookId]) {
+			if (
+				this.$store.getters.userData.books[this.bookId].parts[
+					this.partId
+				]
+			) {
 				return this.$store.getters.userData.books[this.bookId].parts[
 					this.partId
 				].finishedDate;
 			}
 		},
 		savedRating() {
-			if (this.$store.getters.userData.books[this.bookId]) {
+			if (
+				this.$store.getters.userData.books[this.bookId].parts[
+					this.partId
+				]
+			) {
 				return this.$store.getters.userData.books[this.bookId].parts[
 					this.partId
 				].rating;
