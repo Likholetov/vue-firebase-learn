@@ -11,7 +11,11 @@
 						<v-alert :value="error" type="error">
 							{{ error }}
 						</v-alert>
-						<v-form ref="form" v-model="valid" :lazy-validation="lazy">
+						<v-form
+							ref="form"
+							v-model="valid"
+							:lazy-validation="lazy"
+						>
 							<v-text-field
 								label="Имя"
 								v-model.trim="name"
@@ -53,7 +57,12 @@
 					</v-card-text>
 					<v-card-actions>
 						<v-spacer></v-spacer>
-						<v-btn color="primary" @click.prevent="signup" :disabled="processing">Зарегистрироваться</v-btn>
+						<v-btn
+							color="primary"
+							@click.prevent="signup"
+							:disabled="processing || !valid"
+							>Зарегистрироваться</v-btn
+						>
 						<v-spacer></v-spacer>
 					</v-card-actions>
 				</v-card>
@@ -70,24 +79,32 @@ export default {
 		nameRules: [
 			v => !!v || 'Это поле обязательно для заполнения',
 			v => /^[a-zA-Zа-яА-Я]/.test(v) || 'Имя должно начинаться с буквы',
-			v => /^[\wа-яА-Я]+$/.test(v) || 'В имени присутствуют недопустимые символы'
+			v =>
+				/^[\wа-яА-Я]+$/.test(v) ||
+				'В имени присутствуют недопустимые символы'
 		],
 		email: '',
 		emailRules: [
 			v => !!v || 'Это поле обязательно для заполнения',
-			v => /.+@.+\..+/.test(v) || 'Пожалуйста введите настоящий адрес электронной почты'
+			v =>
+				/.+@.+\..+/.test(v) ||
+				'Пожалуйста введите настоящий адрес электронной почты'
 		],
 		password: '',
 		confirmPassword: '',
 		passwordRules: [
 			v => !!v || 'Это поле обязательно для заполнения',
-			v => (v && v.length >= 10) || 'Пароль должен быть не менее 10 символов'
+			v =>
+				(v && v.length >= 10) ||
+				'Пароль должен быть не менее 10 символов'
 		],
-		lazy: true
+		lazy: false
 	}),
 	computed: {
 		comparePasswords() {
-			return this.password !== this.confirmPassword ? 'Пароли не совпадают' : true;
+			return this.password !== this.confirmPassword
+				? 'Пароли не совпадают'
+				: true;
 		},
 		error() {
 			return this.$store.getters.getError;
@@ -108,7 +125,11 @@ export default {
 	},
 	methods: {
 		signup() {
-			this.$store.dispatch('signUp', { email: this.email, password: this.password, name: this.name });
+			this.$store.dispatch('signUp', {
+				email: this.email,
+				password: this.password,
+				name: this.name
+			});
 		}
 	}
 };

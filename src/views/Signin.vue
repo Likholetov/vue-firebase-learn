@@ -11,7 +11,11 @@
 						<v-alert :value="error" type="error">
 							{{ error }}
 						</v-alert>
-						<v-form ref="form" v-model="valid" :lazy-validation="lazy">
+						<v-form
+							ref="form"
+							v-model="valid"
+							:lazy-validation="lazy"
+						>
 							<v-text-field
 								label="Электронная почта"
 								v-model.trim="email"
@@ -34,7 +38,12 @@
 					</v-card-text>
 					<v-card-actions>
 						<v-spacer></v-spacer>
-						<v-btn color="primary" @click.prevent="signin" :disabled="processing">Войти</v-btn>
+						<v-btn
+							color="primary"
+							@click.prevent="signin"
+							:disabled="processing || !valid"
+							>Войти</v-btn
+						>
 						<v-spacer></v-spacer>
 					</v-card-actions>
 				</v-card>
@@ -50,11 +59,13 @@ export default {
 		email: '',
 		emailRules: [
 			v => !!v || 'Это поле обязательно для заполнения',
-			v => /.+@.+\..+/.test(v) || 'Пожалуйста введите настоящий адрес электронной почты'
+			v =>
+				/.+@.+\..+/.test(v) ||
+				'Пожалуйста введите настоящий адрес электронной почты'
 		],
 		password: '',
 		passwordRules: [v => !!v || 'Это поле обязательно для заполнения'],
-		lazy: true
+		lazy: false
 	}),
 	computed: {
 		error() {
@@ -76,7 +87,10 @@ export default {
 	},
 	methods: {
 		signin() {
-			this.$store.dispatch('signIn', { email: this.email, password: this.password });
+			this.$store.dispatch('signIn', {
+				email: this.email,
+				password: this.password
+			});
 		}
 	}
 };
