@@ -28,6 +28,15 @@
 				>
 				<v-btn
 					small
+					color="error"
+					@click="noProcessWord(currentWord)"
+					v-if="currentWord.showTrans"
+				>
+					<v-icon class="mr-2">error</v-icon>Я не запомнил это
+					слово</v-btn
+				>
+				<v-btn
+					small
 					color="success"
 					@click="processWord(currentWord)"
 					v-if="!currentWord.showTrans"
@@ -80,6 +89,9 @@ export default {
 	methods: {
 		processWord(word) {
 			this.$store.dispatch('processUserWord', word.key);
+		},
+		noProcessWord(word) {
+			this.$store.dispatch('noProcessUserWord', word.key);
 		},
 		selectWord(word) {
 			word.showTrans = false;

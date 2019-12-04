@@ -230,6 +230,36 @@ export default {
 						})
 					);
 			}
+		},
+		noProcessUserWord({ commit, getters }, payload) {
+			let word = getters.userData.words[payload];
+
+			let userDataRef = Vue.$db
+				.collection('userData')
+				.doc(getters.userId);
+
+			let nextShowDate = new Date();
+			nextShowDate = new Date(
+				nextShowDate.setDate(new Date().getDate() + 1)
+			);
+			word.nextShowDate = nextShowDate;
+			word.bucket = 1;
+
+			userDataRef
+				.set(
+					{
+						words: {
+							[payload]: word
+						}
+					},
+					{ merge: true }
+				)
+				.then(() =>
+					commit('updateUserWord', {
+						word: word,
+						wordId: payload
+					})
+				);
 		}
 	},
 	getters: {
