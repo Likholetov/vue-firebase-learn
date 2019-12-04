@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app';
 import router from '../router';
 import { EventBus } from '../infrastructure/eventBus';
+import { VMenu } from 'vuetify/lib';
 
 export default {
 	state: {
@@ -9,7 +10,8 @@ export default {
 			uid: null,
 			email: null,
 			name: null
-		}
+		},
+		unsubscribeAuth: null
 	},
 	mutations: {
 		setUser(state, payload) {
@@ -26,9 +28,27 @@ export default {
 		unsetUser(state) {
 			state.user.isAuthenticated = false;
 			state.user.uid = null;
+		},
+		setUnsubscribedAuth(state, payload) {
+			state.unsubscribeAuth = payload;
 		}
 	},
 	actions: {
+		initAuth({ commit, dispatch, state }, payload) {
+			return new Promise((resolve, reject) => {
+				if (state.unsubscribeAuth) state.unsubscribeAuth();
+
+				let unsubscribe = firebase
+					.auth()
+					.onAuthStateChanged(function(user) {
+						dispatch('stateChanged', user);
+
+						resolve(user);
+					});
+
+				commit('setUnsubscribedAuth', unsubscribe);
+			});
+		},
 		signUp({ commit }, payload) {
 			commit('setProcessing', true);
 			commit('clearError');
@@ -73,7 +93,6 @@ export default {
 				dispatch('loadUserData', payload.uid);
 			} else {
 				commit('unsetUser');
-				router.push('/');
 			}
 		},
 		changeUserProfileData({ commit }, payload) {

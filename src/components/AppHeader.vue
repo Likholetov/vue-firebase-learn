@@ -113,6 +113,7 @@ export default {
 	methods: {
 		signout() {
 			this.$store.dispatch('signOut');
+			this.$router.push('/');
 		},
 		toMain() {
 			this.$router.push('/');

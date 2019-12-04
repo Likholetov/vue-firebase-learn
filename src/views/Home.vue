@@ -27,7 +27,7 @@
 						color="primary"
 						dark
 						large
-						@click="books()"
+						@click="booksUrl()"
 					>
 						Начать!
 					</v-btn>
@@ -228,50 +228,29 @@
 								<div class="headline">Contact us</div>
 							</v-card-title>
 							<v-card-text>
-								Cras facilisis mi vitae nunc lobortis pharetra.
-								Nulla volutpat tincidunt ornare.
+								<div class="mb-5">
+									Cras facilisis mi vitae nunc lobortis
+									pharetra. Nulla volutpat tincidunt ornare.
+								</div>
+								<div class="mb-3">
+									<v-icon
+										class="blue--text text--lighten-2 mr-3"
+										>mdi-phone</v-icon
+									>777-867-5309
+								</div>
+								<div class="mb-3">
+									<v-icon
+										class="blue--text text--lighten-2 mr-3"
+										>mdi-map-marker</v-icon
+									>Chicago, US
+								</div>
+								<div>
+									<v-icon
+										class="blue--text text--lighten-2 mr-3"
+										>mdi-email</v-icon
+									>john@vuetifyjs.com
+								</div>
 							</v-card-text>
-							<v-list class="transparent">
-								<v-list-item>
-									<v-list-item-action>
-										<v-icon
-											class="blue--text text--lighten-2"
-											>mdi-phone</v-icon
-										>
-									</v-list-item-action>
-									<v-list-item-content>
-										<v-list-item-title
-											>777-867-5309</v-list-item-title
-										>
-									</v-list-item-content>
-								</v-list-item>
-								<v-list-item>
-									<v-list-item-action>
-										<v-icon
-											class="blue--text text--lighten-2"
-											>mdi-map-marker</v-icon
-										>
-									</v-list-item-action>
-									<v-list-item-content>
-										<v-list-item-title
-											>Chicago, US</v-list-item-title
-										>
-									</v-list-item-content>
-								</v-list-item>
-								<v-list-item>
-									<v-list-item-action>
-										<v-icon
-											class="blue--text text--lighten-2"
-											>mdi-email</v-icon
-										>
-									</v-list-item-action>
-									<v-list-item-content>
-										<v-list-item-title
-											>john@vuetifyjs.com</v-list-item-title
-										>
-									</v-list-item-content>
-								</v-list-item>
-							</v-list>
 						</v-card>
 					</v-flex>
 				</v-layout>
@@ -302,8 +281,8 @@ export default {
 		}
 	},
 	methods: {
-		books() {
-			this.$router.push('/books');
+		booksUrl() {
+			this.$router.push({ name: 'books' });
 		},
 		goToBook(id) {
 			this.$router.push({ name: 'book', params: { id: id } });
