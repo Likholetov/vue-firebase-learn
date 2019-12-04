@@ -17,10 +17,10 @@
 						height="200"
 					/>
 					<h1 class="white--text mb-2 display-1 text-center">
-						Parallax Template
+						Учите английский эффективно
 					</h1>
 					<div class="subheading mb-4 text-center">
-						Powered by Vuetify
+						Делайте то, что интересно, получайте то, что нужно
 					</div>
 					<v-btn
 						class="mt-12"
@@ -29,7 +29,7 @@
 						large
 						@click="booksUrl()"
 					>
-						Начать!
+						Начать
 					</v-btn>
 				</v-layout>
 			</v-parallax>
@@ -40,10 +40,10 @@
 				<v-flex xs12 sm4 class="my-4">
 					<div class="text-center">
 						<h2 class="headline">
-							The best way to start developing
+							Лучший способ выучить английский
 						</h2>
 						<span class="subheading">
-							Cras facilisis mi vitae nunc
+							Легко и быстро
 						</span>
 					</div>
 				</v-flex>
@@ -64,18 +64,16 @@
 										class="layout justify-center"
 									>
 										<div class="headline text-center">
-											Material Design
+											Увлекательные книги
 										</div>
 									</v-card-title>
 									<v-card-text>
-										Cras facilisis mi vitae nunc lobortis
-										pharetra. Nulla volutpat tincidunt
-										ornare. Pellentesque habitant morbi
-										tristique senectus et netus et malesuada
-										fames ac turpis egestas. Nullam in
-										aliquet odio. Aliquam eu est vitae
-										tellus bibendum tincidunt. Suspendisse
-										potenti.
+										Читайте свои любимые книги в оригинале.
+										Узнайте, что скрыли от вас переводчики.
+										Прокачайте знание английского, занимаясь
+										в игровой форме. Расширьте словарный
+										запас, научитесь понимать на слух, и вам
+										больше не придется ждать перевода.
 									</v-card-text>
 								</v-card>
 							</v-flex>
@@ -93,18 +91,16 @@
 										class="layout justify-center"
 									>
 										<div class="headline">
-											Fast development
+											Быстро
 										</div>
 									</v-card-title>
 									<v-card-text>
-										Cras facilisis mi vitae nunc lobortis
-										pharetra. Nulla volutpat tincidunt
-										ornare. Pellentesque habitant morbi
-										tristique senectus et netus et malesuada
-										fames ac turpis egestas. Nullam in
-										aliquet odio. Aliquam eu est vitae
-										tellus bibendum tincidunt. Suspendisse
-										potenti.
+										Освойте английский язык по системе
+										Себастьяна Лейтнера. Эта система —
+										простое, но крайне эффективное
+										применение принципа интервальных
+										повторений, где карточки повторяются
+										через увеличивающиеся интервалы.
 									</v-card-text>
 								</v-card>
 							</v-flex>
@@ -114,7 +110,7 @@
 										<v-icon
 											x-large
 											class="blue--text text--lighten-2"
-											>mdi-wrench</v-icon
+											>event</v-icon
 										>
 									</v-card-text>
 									<v-card-title
@@ -122,18 +118,16 @@
 										class="layout justify-center"
 									>
 										<div class="headline text-center">
-											Completely Open Sourced
+											Обновления
 										</div>
 									</v-card-title>
 									<v-card-text>
-										Cras facilisis mi vitae nunc lobortis
-										pharetra. Nulla volutpat tincidunt
-										ornare. Pellentesque habitant morbi
-										tristique senectus et netus et malesuada
-										fames ac turpis egestas. Nullam in
-										aliquet odio. Aliquam eu est vitae
-										tellus bibendum tincidunt. Suspendisse
-										potenti.
+										Заходите каждый день, повторяйте слова и
+										следите за обновлениями. Новые книги -
+										новые слова, новые слова - новые знания,
+										а знания - это сила. Поразите друзей
+										своей начитанностью и великолепным
+										владением английским.
 									</v-card-text>
 								</v-card>
 							</v-flex>
@@ -207,15 +201,14 @@
 								primary-title
 								class="layout justify-center"
 							>
-								<div class="headline">Company info</div>
+								<div class="headline">О нас</div>
 							</v-card-title>
 							<v-card-text>
-								Cras facilisis mi vitae nunc lobortis pharetra.
-								Nulla volutpat tincidunt ornare. Pellentesque
-								habitant morbi tristique senectus et netus et
-								malesuada fames ac turpis egestas. Nullam in
-								aliquet odio. Aliquam eu est vitae tellus
-								bibendum tincidunt. Suspendisse potenti.
+								VueLearn был создан в качестве дипломной работы.
+								Цель данного проекта: продемонстрировать
+								эффективность взаимодействия передовых
+								технологий и проверенных временем методов для
+								достижения лучших результатов.
 							</v-card-text>
 						</v-card>
 					</v-flex>
@@ -225,30 +218,30 @@
 								primary-title
 								class="layout justify-center"
 							>
-								<div class="headline">Contact us</div>
+								<div class="headline">Контакты</div>
 							</v-card-title>
 							<v-card-text>
 								<div class="mb-5">
-									Cras facilisis mi vitae nunc lobortis
-									pharetra. Nulla volutpat tincidunt ornare.
+									Мы открыты для предложений! Позвони и узнай,
+									как ты можешь помочь проекту VueLearn!
 								</div>
 								<div class="mb-3">
 									<v-icon
 										class="blue--text text--lighten-2 mr-3"
 										>mdi-phone</v-icon
-									>777-867-5309
+									>+38 071 123-45-67
 								</div>
 								<div class="mb-3">
 									<v-icon
 										class="blue--text text--lighten-2 mr-3"
 										>mdi-map-marker</v-icon
-									>Chicago, US
+									>Донецк, ДНР
 								</div>
 								<div>
 									<v-icon
 										class="blue--text text--lighten-2 mr-3"
 										>mdi-email</v-icon
-									>john@vuetifyjs.com
+									>vuelearn@gmail.com
 								</div>
 							</v-card-text>
 						</v-card>
