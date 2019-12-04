@@ -7,7 +7,12 @@
 			class="hidden-md-and-up"
 		>
 			<v-list>
-				<v-list-item v-for="item in menuItems" :key="item.id" link>
+				<v-list-item
+					v-for="item in menuItems"
+					:key="item.id"
+					link
+					:to="item.route"
+				>
 					<v-list-item-icon>
 						<v-icon>{{ item.icon }}</v-icon>
 					</v-list-item-icon>
@@ -22,7 +27,11 @@
 				@click.stop="drawer = !drawer"
 				class="hidden-md-and-up"
 			></v-app-bar-nav-icon>
-			<v-toolbar-title class="headline text-uppercase">
+			<v-toolbar-title
+				class="headline text-uppercase"
+				@click="toMain"
+				style="cursor: pointer;"
+			>
 				<span class="font-weight-black">Vue</span>
 				<span class="font-weight-light">learn</span>
 			</v-toolbar-title>
@@ -73,12 +82,6 @@ export default {
 							route: '/books'
 						},
 						{
-							id: 1,
-							icon: 'extension',
-							title: 'Учить слова',
-							route: '/words'
-						},
-						{
 							id: 2,
 							icon: 'account_circle',
 							title: 'Мой кабинет',
@@ -110,6 +113,9 @@ export default {
 	methods: {
 		signout() {
 			this.$store.dispatch('signOut');
+		},
+		toMain() {
+			this.$router.push('/');
 		}
 	}
 };
